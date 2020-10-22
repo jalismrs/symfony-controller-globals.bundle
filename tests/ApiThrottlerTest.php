@@ -3,7 +3,7 @@ declare(strict_types = 1);
 
 namespace Tests;
 
-use Jalismrs\ApiThrottlerBundle\ApiThrottler;
+use Jalismrs\GlobalsBundle\Globals;
 use Maba\GentleForce\Exception\RateLimitReachedException;
 use Maba\GentleForce\RateLimitProvider;
 use Maba\GentleForce\ThrottlerInterface;
@@ -12,13 +12,13 @@ use PHPUnit\Framework\TestCase;
 use Symfony\Component\HttpKernel\Exception\TooManyRequestsHttpException;
 
 /**
- * Class ApiThrottlerTest
+ * Class GlobalsTest
  *
  * @package Tests
  *
- * @covers  \Jalismrs\ApiThrottlerBundle\ApiThrottler
+ * @covers  \Jalismrs\GlobalsBundle\Globals
  */
-final class ApiThrottlerTest extends
+final class GlobalsTest extends
     TestCase
 {
     /**
@@ -53,13 +53,13 @@ final class ApiThrottlerTest extends
             ->expects(self::once())
             ->method('registerRateLimits')
             ->with(
-                self::equalTo(ApiThrottlerProvider::USE_CASE_KEY),
+                self::equalTo(GlobalsProvider::USE_CASE_KEY),
                 self::equalTo($rateLimits)
             );
         
         // act
         $systemUnderTest->registerRateLimits(
-            ApiThrottlerProvider::USE_CASE_KEY,
+            GlobalsProvider::USE_CASE_KEY,
             $rateLimits
         );
     }
@@ -67,11 +67,11 @@ final class ApiThrottlerTest extends
     /**
      * createSUT
      *
-     * @return \Jalismrs\ApiThrottlerBundle\ApiThrottler
+     * @return \Jalismrs\GlobalsBundle\Globals
      */
-    private function createSUT() : ApiThrottler
+    private function createSUT() : Globals
     {
-        return new ApiThrottler(
+        return new Globals(
             $this->mockRateLimitProvider,
             $this->mockThrottler,
         );
@@ -95,8 +95,8 @@ final class ApiThrottlerTest extends
             ->expects(self::exactly(2))
             ->method('checkAndIncrease')
             ->with(
-                self::equalTo(ApiThrottlerProvider::USE_CASE_KEY),
-                self::equalTo(ApiThrottlerProvider::IDENTIFIER)
+                self::equalTo(GlobalsProvider::USE_CASE_KEY),
+                self::equalTo(GlobalsProvider::IDENTIFIER)
             )
             ->willReturnOnConsecutiveCalls(
                 self::throwException(
@@ -110,8 +110,8 @@ final class ApiThrottlerTest extends
         
         // act
         $systemUnderTest->waitAndIncrease(
-            ApiThrottlerProvider::USE_CASE_KEY,
-            ApiThrottlerProvider::IDENTIFIER
+            GlobalsProvider::USE_CASE_KEY,
+            GlobalsProvider::IDENTIFIER
         );
     }
     
@@ -135,8 +135,8 @@ final class ApiThrottlerTest extends
             ->expects(self::once())
             ->method('checkAndIncrease')
             ->with(
-                self::equalTo(ApiThrottlerProvider::USE_CASE_KEY),
-                self::equalTo(ApiThrottlerProvider::IDENTIFIER)
+                self::equalTo(GlobalsProvider::USE_CASE_KEY),
+                self::equalTo(GlobalsProvider::IDENTIFIER)
             )
             ->willThrowException(
                 new RateLimitReachedException(
@@ -148,8 +148,8 @@ final class ApiThrottlerTest extends
         // act
         $systemUnderTest->setCap(1);
         $systemUnderTest->waitAndIncrease(
-            ApiThrottlerProvider::USE_CASE_KEY,
-            ApiThrottlerProvider::IDENTIFIER
+            GlobalsProvider::USE_CASE_KEY,
+            GlobalsProvider::IDENTIFIER
         );
     }
     
@@ -170,14 +170,14 @@ final class ApiThrottlerTest extends
             ->expects(self::once())
             ->method('decrease')
             ->with(
-                self::equalTo(ApiThrottlerProvider::USE_CASE_KEY),
-                self::equalTo(ApiThrottlerProvider::IDENTIFIER)
+                self::equalTo(GlobalsProvider::USE_CASE_KEY),
+                self::equalTo(GlobalsProvider::IDENTIFIER)
             );
         
         // act
         $systemUnderTest->decrease(
-            ApiThrottlerProvider::USE_CASE_KEY,
-            ApiThrottlerProvider::IDENTIFIER
+            GlobalsProvider::USE_CASE_KEY,
+            GlobalsProvider::IDENTIFIER
         );
     }
     
@@ -198,14 +198,14 @@ final class ApiThrottlerTest extends
             ->expects(self::once())
             ->method('reset')
             ->with(
-                self::equalTo(ApiThrottlerProvider::USE_CASE_KEY),
-                self::equalTo(ApiThrottlerProvider::IDENTIFIER)
+                self::equalTo(GlobalsProvider::USE_CASE_KEY),
+                self::equalTo(GlobalsProvider::IDENTIFIER)
             );
         
         // act
         $systemUnderTest->reset(
-            ApiThrottlerProvider::USE_CASE_KEY,
-            ApiThrottlerProvider::IDENTIFIER
+            GlobalsProvider::USE_CASE_KEY,
+            GlobalsProvider::IDENTIFIER
         );
     }
     
