@@ -1,6 +1,7 @@
 services:
     _defaults:
-        public: false
+        autowire: true
+        autoconfigure: true
     
     globals.globals:
         class: 'Jalismrs\GlobalsBundle\Globals'
