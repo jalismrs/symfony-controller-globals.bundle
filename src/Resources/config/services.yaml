@@ -8,4 +8,9 @@ services:
         arguments:
             $parameters: '%jalismrs_globals.parameters%'
     
-    Jalismrs\Symfony\Bundle\JalismrsGlobalsBundle\GlobalsService: '@jalismrs_globals.globals_service'
+    #Jalismrs\Symfony\Bundle\JalismrsGlobalsBundle\GlobalsService: '@jalismrs_globals.globals_service'
+
+    jalismrs_globals.globals_container:
+        class: 'Jalismrs\Symfony\Bundle\JalismrsGlobalsBundle\Controller\GlobalsController'
+        tags:
+            - 'controller.service_arguments'
