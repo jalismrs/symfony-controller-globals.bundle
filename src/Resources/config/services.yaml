@@ -8,11 +8,11 @@ services:
         arguments:
             $parameters: '%jalismrs_globals.parameters%'
     
-    jalismrs_globals.globals_container:
+    jalismrs_globals.globals_controller:
         arguments:
             $globalsService: '@jalismrs_globals.globals_service'
         calls:
-            setContainer:
+            - setContainer:
                 arguments:
                     $container: '@Psr\Container\ContainerInterface'
         class: 'Jalismrs\Symfony\Bundle\JalismrsGlobalsBundle\Controller\GlobalsController'
