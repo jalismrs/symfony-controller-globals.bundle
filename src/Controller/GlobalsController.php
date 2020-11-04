@@ -30,6 +30,8 @@ class GlobalsController extends
      * GlobalsController constructor.
      *
      * @param \Jalismrs\Symfony\Bundle\JalismrsGlobalsBundle\GlobalsService $globalsService
+     *
+     * @codeCoverageIgnore
      */
     public function __construct(
         GlobalsService $globalsService

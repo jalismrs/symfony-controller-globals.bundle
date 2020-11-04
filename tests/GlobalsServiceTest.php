@@ -8,7 +8,7 @@ use PHPUnit\Framework\TestCase;
 use Symfony\Component\DependencyInjection\ParameterBag\ParameterBag;
 
 /**
- * Class GlobalsTest
+ * Class GlobalsServiceTest
  *
  * @package Tests
  *
