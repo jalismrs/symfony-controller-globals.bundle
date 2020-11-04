@@ -1,4 +1,4 @@
 globals:
-    controller: 'Jalismrs\Symfony\Bundle\JalismrsGlobalsBundle\Controller\GlobalsController::index'
+    controller: 'jalismrs_globals.globals_controller::index'
     methods: 'GET'
     path: '/globals'
