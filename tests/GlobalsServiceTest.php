@@ -67,7 +67,8 @@ final class GlobalsServiceTest extends
         return new GlobalsService(
             $testParameterBag,
             [
-                'app.name',
+                'name1' => 'app.name',
+                'name2' => 'app.name',
             ]
         );
     }
