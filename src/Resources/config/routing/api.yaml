@@ -1,0 +1,3 @@
+globals:
+    path: '/globals'
+    controller: 'Jalismrs\Symfony\Bundle\JalismrsGlobalsBundle\Controller\GlobalsController::index'
