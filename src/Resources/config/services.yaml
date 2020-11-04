@@ -3,28 +3,7 @@ services:
         autowire: true
         autoconfigure: true
     
-    globals.globals:
-        class: 'Jalismrs\GlobalsBundle\Globals'
-        arguments:
-            $rateLimitProvider: '@Maba\GentleForce\RateLimitProvider'
-            $throttler: '@Maba\GentleForce\ThrottlerInterface'
+    jalismrs_globals.globals_service:
+        class: 'Jalismrs\Symfony\Bundle\JalismrsGlobalsBundle\GlobalsService'
     
-    Jalismrs\GlobalsBundle\Globals: '@globals.globals'
-    
-    # maba/gentle-force
-    Maba\GentleForce\RateLimitProvider:
-        autowire: true
-    Maba\GentleForce\Throttler:
-        arguments:
-            $client: '@Predis\Client'
-            $rateLimitProvider: '@Maba\GentleForce\RateLimitProvider'
-            $prefix: 'rate_limit::'
-    Maba\GentleForce\ThrottlerInterface: '@Maba\GentleForce\Throttler'
-    
-    # predis/predis
-    Predis\Client:
-        arguments:
-            $parameters:
-                host: '%env(REDIS_HOST)%'
-            $options:
-                prefix: '%app.name%::'
+    Jalismrs\Symfony\Bundle\JalismrsGlobalsBundle\GlobalsService: '@jalismrs_globals.globals_service'
