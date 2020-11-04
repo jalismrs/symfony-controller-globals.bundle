@@ -15,7 +15,5 @@ services:
             - setContainer:
                 $container: '@Psr\Container\ContainerInterface'
         class: 'Jalismrs\Symfony\Bundle\JalismrsGlobalsBundle\Controller\GlobalsController'
-        public: true
         tags:
-            #- 'container.service_subscriber'
             - 'controller.service_arguments'
