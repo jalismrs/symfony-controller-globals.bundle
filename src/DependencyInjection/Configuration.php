@@ -1,7 +1,7 @@
 <?php
 declare(strict_types = 1);
 
-namespace Jalismrs\Symfony\Bundle\JalismrsApiThrottlerBundle\DependencyInjection;
+namespace Jalismrs\Symfony\Bundle\JalismrsGlobalsBundle\DependencyInjection;
 
 use Symfony\Component\Config\Definition\Builder\TreeBuilder;
 use Symfony\Component\Config\Definition\ConfigurationInterface;
@@ -9,7 +9,7 @@ use Symfony\Component\Config\Definition\ConfigurationInterface;
 /**
  * Class Configuration
  *
- * @package Jalismrs\Symfony\Bundle\JalismrsApiThrottlerBundle\DependencyInjection
+ * @package Jalismrs\Symfony\Bundle\JalismrsGlobalsBundle\DependencyInjection
  */
 class Configuration implements
     ConfigurationInterface

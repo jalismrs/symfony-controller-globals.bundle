@@ -1,7 +1,7 @@
 <?php
 declare(strict_types = 1);
 
-namespace Jalismrs\Symfony\Bundle\JalismrsApiThrottlerBundle\DependencyInjection;
+namespace Jalismrs\Symfony\Bundle\JalismrsGlobalsBundle\DependencyInjection;
 
 use Symfony\Component\Config\FileLocator;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
@@ -12,7 +12,7 @@ use function preg_match;
 /**
  * Class JalismrsGlobalsExtension
  *
- * @package Jalismrs\Symfony\Bundle\JalismrsApiThrottlerBundle\DependencyInjection
+ * @package Jalismrs\Symfony\Bundle\JalismrsGlobalsBundle\DependencyInjection
  */
 class JalismrsGlobalsExtension extends
     ConfigurableExtension
