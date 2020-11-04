@@ -7,7 +7,6 @@ use Symfony\Component\Config\FileLocator;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Loader\YamlFileLoader;
 use Symfony\Component\HttpKernel\DependencyInjection\ConfigurableExtension;
-use function preg_match;
 
 /**
  * Class JalismrsGlobalsExtension
@@ -20,7 +19,7 @@ class JalismrsGlobalsExtension extends
     /**
      * loadInternal
      *
-     * @param array $mergedConfig
+     * @param array                                                   $mergedConfig
      * @param \Symfony\Component\DependencyInjection\ContainerBuilder $container
      *
      * @return void
@@ -31,7 +30,7 @@ class JalismrsGlobalsExtension extends
         array $mergedConfig,
         ContainerBuilder $container
     ) : void {
-        $fileLocator = new FileLocator(
+        $fileLocator    = new FileLocator(
             __DIR__ . '/../Resources/config'
         );
         $yamlFileLoader = new YamlFileLoader(
