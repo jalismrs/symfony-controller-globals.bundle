@@ -4,10 +4,10 @@ services:
         autoconfigure: true
     
     jalismrs_globals.globals_service:
-        class: 'Jalismrs\Symfony\Bundle\JalismrsGlobalsBundle\GlobalsService'
         arguments:
             $parameters: '%jalismrs_globals.parameters%'
-    
+        class: 'Jalismrs\Symfony\Bundle\JalismrsGlobalsBundle\GlobalsService'
+
     jalismrs_globals.globals_controller:
         arguments:
             $globalsService: '@jalismrs_globals.globals_service'
@@ -17,5 +17,5 @@ services:
         class: 'Jalismrs\Symfony\Bundle\JalismrsGlobalsBundle\Controller\GlobalsController'
         public: true
         tags:
-            - 'container.service_subscriber'
+            #- 'container.service_subscriber'
             - 'controller.service_arguments'
