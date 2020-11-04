@@ -13,8 +13,7 @@ services:
             $globalsService: '@jalismrs_globals.globals_service'
         calls:
             - setContainer:
-                arguments:
-                    $container: '@Psr\Container\ContainerInterface'
+                $container: '@Psr\Container\ContainerInterface'
         class: 'Jalismrs\Symfony\Bundle\JalismrsGlobalsBundle\Controller\GlobalsController'
         tags:
             - 'container.service_subscriber'
