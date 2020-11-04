@@ -8,7 +8,7 @@ use PHPUnit\Framework\TestCase;
 use Symfony\Component\DependencyInjection\ParameterBag\ParameterBag;
 
 /**
- * Class GlobalsTest
+ * Class GlobalsServiceTest
  *
  * @package Tests
  *
@@ -67,7 +67,8 @@ final class GlobalsServiceTest extends
         return new GlobalsService(
             $testParameterBag,
             [
-                'app.name',
+                'name1' => 'app.name',
+                'name2' => 'app.name',
             ]
         );
     }

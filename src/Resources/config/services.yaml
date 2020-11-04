@@ -4,6 +4,16 @@ services:
         autoconfigure: true
     
     jalismrs_globals.globals_service:
+        arguments:
+            $parameters: '%jalismrs_globals.parameters%'
         class: 'Jalismrs\Symfony\Bundle\JalismrsGlobalsBundle\GlobalsService'
-    
-    Jalismrs\Symfony\Bundle\JalismrsGlobalsBundle\GlobalsService: '@jalismrs_globals.globals_service'
+
+    jalismrs_globals.globals_controller:
+        arguments:
+            $globalsService: '@jalismrs_globals.globals_service'
+        calls:
+            - setContainer:
+                $container: '@Psr\Container\ContainerInterface'
+        class: 'Jalismrs\Symfony\Bundle\JalismrsGlobalsBundle\Controller\GlobalsController'
+        tags:
+            - 'controller.service_arguments'

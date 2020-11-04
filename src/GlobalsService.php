@@ -5,6 +5,7 @@ namespace Jalismrs\Symfony\Bundle\JalismrsGlobalsBundle;
 
 use Symfony\Component\DependencyInjection\ParameterBag\ParameterBagInterface;
 use function array_unique;
+use function array_values;
 
 /**
  * Class GlobalsService
@@ -36,8 +37,11 @@ class GlobalsService
         ParameterBagInterface $parameterBag,
         array $parameters
     ) {
+        $parameters = array_unique($parameters);
+        $parameters = array_values($parameters);
+        
         $this->parameterBag = $parameterBag;
-        $this->parameters   = array_unique($parameters);
+        $this->parameters   = $parameters;
     }
     
     /**

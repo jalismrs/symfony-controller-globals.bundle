@@ -1,18 +1,17 @@
 <?php
 declare(strict_types = 1);
 
-namespace Jalismrs\Symfony\Bundle\JalismrsApiThrottlerBundle\DependencyInjection;
+namespace Jalismrs\Symfony\Bundle\JalismrsGlobalsBundle\DependencyInjection;
 
 use Symfony\Component\Config\FileLocator;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Loader\YamlFileLoader;
 use Symfony\Component\HttpKernel\DependencyInjection\ConfigurableExtension;
-use function preg_match;
 
 /**
  * Class JalismrsGlobalsExtension
  *
- * @package Jalismrs\Symfony\Bundle\JalismrsApiThrottlerBundle\DependencyInjection
+ * @package Jalismrs\Symfony\Bundle\JalismrsGlobalsBundle\DependencyInjection
  */
 class JalismrsGlobalsExtension extends
     ConfigurableExtension
@@ -20,7 +19,7 @@ class JalismrsGlobalsExtension extends
     /**
      * loadInternal
      *
-     * @param array $mergedConfig
+     * @param array                                                   $mergedConfig
      * @param \Symfony\Component\DependencyInjection\ContainerBuilder $container
      *
      * @return void
@@ -31,7 +30,7 @@ class JalismrsGlobalsExtension extends
         array $mergedConfig,
         ContainerBuilder $container
     ) : void {
-        $fileLocator = new FileLocator(
+        $fileLocator    = new FileLocator(
             __DIR__ . '/../Resources/config'
         );
         $yamlFileLoader = new YamlFileLoader(
