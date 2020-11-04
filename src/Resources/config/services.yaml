@@ -5,5 +5,7 @@ services:
     
     jalismrs_globals.globals_service:
         class: 'Jalismrs\Symfony\Bundle\JalismrsGlobalsBundle\GlobalsService'
+        arguments:
+            $parameters: '%jalismrs_globals.parameters%'
     
     Jalismrs\Symfony\Bundle\JalismrsGlobalsBundle\GlobalsService: '@jalismrs_globals.globals_service'
