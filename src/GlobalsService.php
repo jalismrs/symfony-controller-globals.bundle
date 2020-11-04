@@ -37,7 +37,6 @@ class GlobalsService
         ParameterBagInterface $parameterBag,
         array $parameters
     ) {
-        $parameters = array_values($parameters);
         $parameters = array_unique($parameters);
         $parameters = array_values($parameters);
         
