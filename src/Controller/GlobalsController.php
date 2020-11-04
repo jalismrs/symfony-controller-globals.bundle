@@ -20,20 +20,36 @@ class GlobalsController extends
     IsApiControllerInterface
 {
     /**
-     * index
+     * globalsService
+     *
+     * @var \Jalismrs\Symfony\Bundle\JalismrsGlobalsBundle\GlobalsService
+     */
+    private GlobalsService $globalsService;
+    
+    /**
+     * GlobalsController constructor.
      *
      * @param \Jalismrs\Symfony\Bundle\JalismrsGlobalsBundle\GlobalsService $globalsService
-     * @param \Symfony\Component\HttpFoundation\Request                     $request
+     */
+    public function __construct(
+        GlobalsService $globalsService
+    ) {
+        $this->globalsService = $globalsService;
+    }
+    
+    /**
+     * index
+     *
+     * @param \Symfony\Component\HttpFoundation\Request $request
      *
      * @return \Symfony\Component\HttpFoundation\JsonResponse
      *
      * @throws \Symfony\Component\DependencyInjection\Exception\ParameterNotFoundException
      */
     public function index(
-        GlobalsService $globalsService,
         Request $request
     ) : JsonResponse {
-        $parameters = $globalsService->get();
+        $parameters = $this->globalsService->get();
         $data       = new ArrayObject(
             $parameters
         );
