@@ -6,7 +6,7 @@ services:
     # controllers
     jalismrs_globals.controller.globals_controller:
         arguments:
-            $globalsService: '@jalismrs_globals.globals_service'
+            $controllerService: '@jalismrs_globals.controller_service.globals_controller_service'
         calls:
             - setContainer:
                 $container: '@Psr\Container\ContainerInterface'
@@ -14,8 +14,8 @@ services:
         tags:
             - 'controller.service_arguments'
     
-    # services
-    jalismrs_globals.globals_service:
+    # controller-services
+    jalismrs_globals.controller_service.globals_controller_service:
         arguments:
             $parameters: '%jalismrs_globals.parameters%'
-        class: 'Jalismrs\Symfony\Bundle\JalismrsGlobalsBundle\GlobalsService'
+        class: 'Jalismrs\Symfony\Bundle\JalismrsGlobalsBundle\ControllerService\GlobalsControllerService'

@@ -1,18 +1,19 @@
 <?php
 declare(strict_types = 1);
 
-namespace Jalismrs\Symfony\Bundle\JalismrsGlobalsBundle;
+namespace Jalismrs\Symfony\Bundle\JalismrsGlobalsBundle\ControllerService;
 
+use ArrayObject;
 use Symfony\Component\DependencyInjection\ParameterBag\ParameterBagInterface;
 use function array_unique;
 use function array_values;
 
 /**
- * Class GlobalsService
+ * Class GlobalsControllerService
  *
- * @package Jalismrs\Symfony\Bundle\JalismrsGlobalsBundle
+ * @package Jalismrs\Symfony\Bundle\JalismrsGlobalsBundle\ControllerService
  */
-class GlobalsService
+class GlobalsControllerService
 {
     /**
      * parameterBag
@@ -45,13 +46,13 @@ class GlobalsService
     }
     
     /**
-     * get
+     * index
      *
-     * @return array
+     * @return \ArrayObject
      *
      * @throws \Symfony\Component\DependencyInjection\Exception\ParameterNotFoundException
      */
-    public function get() : array
+    public function index() : ArrayObject
     {
         $parameters = [];
         
@@ -59,6 +60,8 @@ class GlobalsService
             $parameters[$parameter] = $this->parameterBag->get($parameter);
         }
         
-        return $parameters;
+        return new ArrayObject(
+            $parameters
+        );
     }
 }
