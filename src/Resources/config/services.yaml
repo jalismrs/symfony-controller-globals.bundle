@@ -3,17 +3,19 @@ services:
         autowire: true
         autoconfigure: true
     
-    jalismrs_globals.globals_service:
+    # controllers
+    jalismrs_globals.controller.globals_controller:
         arguments:
-            $parameters: '%jalismrs_globals.parameters%'
-        class: 'Jalismrs\Symfony\Bundle\JalismrsGlobalsBundle\GlobalsService'
-
-    jalismrs_globals.globals_controller:
-        arguments:
-            $globalsService: '@jalismrs_globals.globals_service'
+            $controllerService: '@jalismrs_globals.controller_service.globals_controller_service'
         calls:
             - setContainer:
                 $container: '@Psr\Container\ContainerInterface'
         class: 'Jalismrs\Symfony\Bundle\JalismrsGlobalsBundle\Controller\GlobalsController'
         tags:
             - 'controller.service_arguments'
+    
+    # controller-services
+    jalismrs_globals.controller_service.globals_controller_service:
+        arguments:
+            $parameters: '%jalismrs_globals.parameters%'
+        class: 'Jalismrs\Symfony\Bundle\JalismrsGlobalsBundle\ControllerService\GlobalsControllerService'

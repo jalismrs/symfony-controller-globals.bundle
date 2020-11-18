@@ -1,5 +1,4 @@
-api:
-    name_prefix: 'api_'
-    prefix: '/api'
-    resource: 'routing/api.yaml'
+jalismrs_globals:
+    name_prefix: 'jalismrs_globals_'
+    resource: 'routing/root.yaml'
     trailing_slash_on_root: false

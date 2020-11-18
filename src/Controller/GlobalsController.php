@@ -3,9 +3,8 @@ declare(strict_types = 1);
 
 namespace Jalismrs\Symfony\Bundle\JalismrsGlobalsBundle\Controller;
 
-use ArrayObject;
 use Jalismrs\Symfony\Bundle\JalismrsApiMiddlewareBundle\IsApiControllerInterface;
-use Jalismrs\Symfony\Bundle\JalismrsGlobalsBundle\GlobalsService;
+use Jalismrs\Symfony\Bundle\JalismrsGlobalsBundle\ControllerService\GlobalsControllerService;
 use Jalismrs\Symfony\Common\ControllerAbstract;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
@@ -20,23 +19,23 @@ class GlobalsController extends
     IsApiControllerInterface
 {
     /**
-     * globalsService
+     * controllerService
      *
-     * @var \Jalismrs\Symfony\Bundle\JalismrsGlobalsBundle\GlobalsService
+     * @var \Jalismrs\Symfony\Bundle\JalismrsGlobalsBundle\ControllerService\GlobalsControllerService
      */
-    private GlobalsService $globalsService;
+    private GlobalsControllerService $controllerService;
     
     /**
      * GlobalsController constructor.
      *
-     * @param \Jalismrs\Symfony\Bundle\JalismrsGlobalsBundle\GlobalsService $globalsService
+     * @param \Jalismrs\Symfony\Bundle\JalismrsGlobalsBundle\ControllerService\GlobalsControllerService $controllerService
      *
      * @codeCoverageIgnore
      */
     public function __construct(
-        GlobalsService $globalsService
+        GlobalsControllerService $controllerService
     ) {
-        $this->globalsService = $globalsService;
+        $this->controllerService = $controllerService;
     }
     
     /**
@@ -51,10 +50,7 @@ class GlobalsController extends
     public function index(
         Request $request
     ) : JsonResponse {
-        $parameters = $this->globalsService->get();
-        $data       = new ArrayObject(
-            $parameters
-        );
+        $data = $this->controllerService->index();
         
         return $this->returnJson(
             $request,

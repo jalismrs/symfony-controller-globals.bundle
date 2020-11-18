@@ -3,8 +3,9 @@ declare(strict_types = 1);
 
 namespace Tests\Controller;
 
+use ArrayObject;
 use Jalismrs\Symfony\Bundle\JalismrsGlobalsBundle\Controller\GlobalsController;
-use Jalismrs\Symfony\Bundle\JalismrsGlobalsBundle\GlobalsService;
+use Jalismrs\Symfony\Bundle\JalismrsGlobalsBundle\ControllerService\GlobalsControllerService;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 use Psr\Container\ContainerInterface;
@@ -27,11 +28,11 @@ final class GlobalsControllerTest extends
      */
     private MockObject $mockContainer;
     /**
-     * mockGlobalsService
+     * mockControllerService
      *
-     * @var \Jalismrs\Symfony\Bundle\JalismrsGlobalsBundle\GlobalsService|\PHPUnit\Framework\MockObject\MockObject
+     * @var \PHPUnit\Framework\MockObject\MockObject|\Jalismrs\Symfony\Bundle\JalismrsGlobalsBundle\ControllerService\GlobalsControllerService
      */
-    private MockObject $mockGlobalsService;
+    private MockObject $mockControllerService;
     
     /**
      * testIndex
@@ -51,21 +52,17 @@ final class GlobalsControllerTest extends
         $request = new Request();
         
         // expect
-        $this->mockGlobalsService
+        $this->mockControllerService
             ->expects(self::once())
-            ->method('get')
-            ->willReturn(
-                [
-                    'parameter' => 'value',
-                ]
-            );
+            ->method('index')
+            ->willReturn(new ArrayObject());
         
         // act
         $output = $systemUnderTest->index($request);
         
         // assert
         self::assertSame(
-            '{"parameter":"value"}',
+            '{}',
             $output->getContent(),
         );
     }
@@ -79,7 +76,7 @@ final class GlobalsControllerTest extends
     {
         // arrange
         $globalsController = new GlobalsController(
-            $this->mockGlobalsService
+            $this->mockControllerService
         );
         
         // act
@@ -92,7 +89,7 @@ final class GlobalsControllerTest extends
     {
         parent::setUp();
         
-        $this->mockContainer      = $this->createMock(ContainerInterface::class);
-        $this->mockGlobalsService = $this->createMock(GlobalsService::class);
+        $this->mockContainer         = $this->createMock(ContainerInterface::class);
+        $this->mockControllerService = $this->createMock(GlobalsControllerService::class);
     }
 }

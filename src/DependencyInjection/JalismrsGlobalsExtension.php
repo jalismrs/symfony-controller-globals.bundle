@@ -39,7 +39,7 @@ class JalismrsGlobalsExtension extends
         );
         $yamlFileLoader->load('services.yaml');
         
-        $definition = $container->getDefinition(Configuration::CONFIG_ROOT . '.globals_service');
+        $definition = $container->getDefinition(Configuration::CONFIG_ROOT . '.controller_service.globals_controller_service');
         $definition->replaceArgument(
             '$parameters',
             $mergedConfig['parameters']

@@ -1,24 +1,24 @@
 <?php
 declare(strict_types = 1);
 
-namespace Tests;
+namespace Tests\ControllerService;
 
-use Jalismrs\Symfony\Bundle\JalismrsGlobalsBundle\GlobalsService;
+use Jalismrs\Symfony\Bundle\JalismrsGlobalsBundle\ControllerService\GlobalsControllerService;
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\DependencyInjection\ParameterBag\ParameterBag;
 
 /**
- * Class GlobalsServiceTest
+ * Class GlobalsControllerServiceTest
  *
- * @package Tests
+ * @package Tests\ControllerService
  *
- * @covers  \Jalismrs\Symfony\Bundle\JalismrsGlobalsBundle\GlobalsService
+ * @covers  \Jalismrs\Symfony\Bundle\JalismrsGlobalsBundle\ControllerService\GlobalsControllerService
  */
-final class GlobalsServiceTest extends
+final class GlobalsControllerServiceTest extends
     TestCase
 {
     /**
-     * testGet
+     * testIndex
      *
      * @return void
      *
@@ -27,13 +27,15 @@ final class GlobalsServiceTest extends
      * @throws \SebastianBergmann\RecursionContext\InvalidArgumentException
      * @throws \Symfony\Component\DependencyInjection\Exception\ParameterNotFoundException
      */
-    public function testGet() : void
+    public function testIndex() : void
     {
         // arrange
         $systemUnderTest = $this->createSUT();
         
         // act
-        $output = $systemUnderTest->get();
+        $output = $systemUnderTest
+            ->index()
+            ->getArrayCopy();
         
         // assert
         self::assertCount(
@@ -53,9 +55,9 @@ final class GlobalsServiceTest extends
     /**
      * createSUT
      *
-     * @return \Jalismrs\Symfony\Bundle\JalismrsGlobalsBundle\GlobalsService
+     * @return \Jalismrs\Symfony\Bundle\JalismrsGlobalsBundle\ControllerService\GlobalsControllerService
      */
-    private function createSUT() : GlobalsService
+    private function createSUT() : GlobalsControllerService
     {
         $testParameterBag = new ParameterBag(
             [
@@ -64,7 +66,7 @@ final class GlobalsServiceTest extends
             ]
         );
         
-        return new GlobalsService(
+        return new GlobalsControllerService(
             $testParameterBag,
             [
                 'name1' => 'app.name',
