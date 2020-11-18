@@ -28,11 +28,11 @@ final class GlobalsControllerTest extends
      */
     private MockObject $mockContainer;
     /**
-     * mockGlobalsControllerService
+     * mockControllerService
      *
      * @var \PHPUnit\Framework\MockObject\MockObject|\Jalismrs\Symfony\Bundle\JalismrsGlobalsBundle\ControllerService\GlobalsControllerService
      */
-    private MockObject $mockGlobalsControllerService;
+    private MockObject $mockControllerService;
     
     /**
      * testIndex
@@ -52,7 +52,7 @@ final class GlobalsControllerTest extends
         $request = new Request();
         
         // expect
-        $this->mockGlobalsControllerService
+        $this->mockControllerService
             ->expects(self::once())
             ->method('index')
             ->willReturn(new ArrayObject());
@@ -76,7 +76,7 @@ final class GlobalsControllerTest extends
     {
         // arrange
         $globalsController = new GlobalsController(
-            $this->mockGlobalsControllerService
+            $this->mockControllerService
         );
         
         // act
@@ -89,7 +89,7 @@ final class GlobalsControllerTest extends
     {
         parent::setUp();
         
-        $this->mockContainer                = $this->createMock(ContainerInterface::class);
-        $this->mockGlobalsControllerService = $this->createMock(GlobalsControllerService::class);
+        $this->mockContainer         = $this->createMock(ContainerInterface::class);
+        $this->mockControllerService = $this->createMock(GlobalsControllerService::class);
     }
 }
