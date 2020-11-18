@@ -1,4 +1,4 @@
 globals:
-    controller: 'jalismrs_globals.globals_controller::index'
+    controller: 'jalismrs_globals.controller.globals_controller::index'
     methods: 'GET'
     path: '/globals'

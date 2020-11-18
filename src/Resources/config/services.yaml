@@ -4,7 +4,7 @@ services:
         autoconfigure: true
     
     # controllers
-    jalismrs_globals.globals_controller:
+    jalismrs_globals.controller.globals_controller:
         arguments:
             $globalsService: '@jalismrs_globals.globals_service'
         calls:
