@@ -15,3 +15,10 @@ jalismrs_globals:
         - 'parameter1'
         - 'parameter2'
 ```
+```yaml
+# config/routes.yaml
+
+_globals:
+    resource: '@JalismrsGlobalsBundle/Resources/config/routes.yaml'
+    trailing_slash_on_root: false
+```
